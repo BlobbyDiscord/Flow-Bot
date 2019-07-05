@@ -19,25 +19,23 @@ client.on('message', message => {
   }
 });
 
-
+// Create an event listener for new guild members
+client.on('guildMemberAdd', member => {
+  // Send the message to a designated channel on a server:
+  const channel = member.guild.channels.find(ch => ch.name === 'Welcome');
+  // Do nothing if the channel wasn't found on this server
+  if (!channel) return;
+  // Send the message, mentioning the member
+  channel.send(`Welcome to the server, ${member}`);
+});
 
 client.on('message', message => {
-  // If the message is "how to embed"
-  if (message.content === '//radio') {
-    // We can create embeds using the MessageEmbed constructor
-    // Read more about all that you can do with the constructor
-    // over at https://discord.js.org/#/docs/main/stable/class/RichEmbed
-    const embed = new RichEmbed()
-      // Set the title of the field
-      .setTitle('FlowRadio')
-      // Set the color of the embed
-      .setColor(0xFF0000)
-      // Set the main content of the embed
-      .setDescription('https://flowradio.ml');
-    // Send the embed to the same channel as the message
-    message.channel.send(embed);
-  }
-});
+ if (message.content === '//announce') {
+  // Create a new webhook
+  const hook = new Discord.WebhookClient('webhook id', 'webhook token');
+  // Send a message using the webhook
+  hook.send('I am now alive!');
+ });
  
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
