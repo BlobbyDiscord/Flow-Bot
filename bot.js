@@ -50,7 +50,7 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content === '//links') {
-       message.reply('Run ```//links1``` for Radio link! Run ```//links2``` for Rules! Run ```//links3// for COmmands!');
+       message.reply('Run ```//links1``` for Radio link! Run ```//links2``` for Rules! Run ```//links3``` for COmmands!');
        }
 });
 client.on('message', message => {
