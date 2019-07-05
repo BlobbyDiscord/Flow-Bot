@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const { Client, RichEmbed } = require('discord.js');
 const client = new Discord.Client();
  
 client.on('ready', () => {
@@ -34,6 +35,26 @@ client.on('message', message => {
     if (message.content === '//rules') {
        message.reply('Check out #rules');
        }
+});
+
+
+
+client.on('message', message => {
+  // If the message is "how to embed"
+  if (message.content === './/desc') {
+    // We can create embeds using the MessageEmbed constructor
+    // Read more about all that you can do with the constructor
+    // over at https://discord.js.org/#/docs/main/stable/class/RichEmbed
+    const embed = new RichEmbed()
+      // Set the title of the field
+      .setTitle('FlowRadio')
+      // Set the color of the embed
+      .setColor(0xFF0000)
+      // Set the main content of the embed
+      .setDescription('Flow Radio is a community driven radio with amazing staff and founders we are sure to keep the fun & creativity flowing! We are supported by the Owner of Contasia Sales which you can join by using the -contasia command! We are applying for DJs Website Admins and Staff!');
+    // Send the embed to the same channel as the message
+    message.channel.send(embed);
+  }
 });
 
 client.on('message', message => {
