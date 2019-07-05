@@ -12,21 +12,37 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
+    if (message.content === '//radio') {
+       message.reply('Visit https://flowradio.ml/');
+       }
+});
+
+client.on('message', message => {
+    if (message.content === '//ssl') {
+       message.reply('SSL is only active if you enter https://flowradio.ml and non SSL is http://flowradio.ml');
+       }
+});
+
+client.on('message', message => {
+    if (message.content === '//links') {
+       message.reply(':link: https://flowradio.ml/ **Radio**');
+       message.reply(':link: https://flowradio.ml/rules **Rules**');
+       message.reply(':link: https://flowradio.ml/commands **Commands**');
+       }
+});
+
+client.on('message', message => {
+    if (message.content === '//help') {
+       message.reply('For a list of command visit https://flowradio.ml/commands');
+       }
+});
+
+client.on('message', message => {
   // If the message is "what is my avatar"
   if (message.content === '//avatar') {
     // Send the user's avatar URL
     message.reply(message.author.avatarURL);
   }
-});
-
-// Create an event listener for new guild members
-client.on('guildMemberAdd', member => {
-  // Send the message to a designated channel on a server:
-  const channel = member.guild.channels.find(ch => ch.name === 'Welcome');
-  // Do nothing if the channel wasn't found on this server
-  if (!channel) return;
-  // Send the message, mentioning the member
-  channel.send(`Welcome to the server, ${member}`);
 });
 
  
